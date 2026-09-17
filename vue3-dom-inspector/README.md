@@ -2,6 +2,18 @@
 
 仅右侧面板。左侧是第三方原系统，不改造其源码。通过宿主提供的 `BrowserAction` / `__prototype__` 桥接注入与回传。
 
+## 全局加载 BrowserAction（必需）
+
+宿主环境要求在 Vue 应用的 `index.html` 中**全局**引入脚本，否则 `window.BrowserAction` 不存在：
+
+```html
+<script src="http://25.215.213.128:18080/a_js/BrowserAction.js"></script>
+```
+
+本仓库已在 `index.html` 中、应用入口 `/src/main.js` **之前**加入该标签（经典脚本同步加载，模块脚本延迟执行，保证挂载前 API 可用）。
+
+若脚本加载失败或 `BrowserAction` 仍缺失，应用会自动走 **Mock 悬停流**，本地仍可演示面板。
+
 ## 快速开始
 
 ```bash
@@ -90,11 +102,12 @@ window.parent.callbackNameUseInfo = (text) => {
 
 | API | 侧 | 用途 |
 |-----|----|------|
+| `BrowserAction.js` 全局脚本 | 右侧 `index.html` | 提供 `window.BrowserAction`（见上方 URL） |
 | `BrowserAction(action, url, jsCode, mode)` | 右侧 | `sgBrowserExcuteJsCodeByArea` 向原系统区域执行 JS |
 | `__prototype__(action, url, jsExpr)` | 左侧（注入代码内） | `sgBrowserExcuteJsCode` 在右侧执行回调表达式 |
 | `window.parent.callbackNameUseInfo` | 右侧 | 接收回传对象 / JSON |
 
-缺任一注入侧 API 时自动 Mock，便于离线演示。
+脚本未加载成功或 `BrowserAction` 仍缺失时自动 Mock，便于离线演示。
 
 ## 目录
 

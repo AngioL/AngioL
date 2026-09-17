@@ -8,6 +8,8 @@
   </head>
   <body>
     <div id="app"></div>
+    <!-- Host bridge: must load globally so window.BrowserAction exists before the Vue app mounts -->
+    <script src="http://25.215.213.128:18080/a_js/BrowserAction.js"></script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
