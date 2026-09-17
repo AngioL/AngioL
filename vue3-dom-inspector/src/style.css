@@ -1,0 +1,45 @@
+:root {
+  --sg-primary: #2f9e5f;
+  --sg-primary-dark: #1f7a48;
+  --sg-header: #1a6b4a;
+  --sg-bg: #eef2f0;
+  --sg-panel: #ffffff;
+  --sg-muted: #6b7280;
+  --sg-border: #e5e7eb;
+  --sg-accent: #67c23a;
+  font-family: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #1f2937;
+  background: var(--sg-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(47, 158, 95, 0.12), transparent 45%),
+    linear-gradient(165deg, #e8efe9 0%, #f3f5f4 40%, #e6ebe8 100%);
+}
+
+button {
+  font-family: inherit;
+}
+
+code,
+.mono {
+  font-family: 'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+}
